@@ -1,0 +1,43 @@
+
+<table>
+    <tr>
+        <td>
+            <h1>Search Result</h1>
+        </td>
+        <td>
+            <button [routerLink]="['/']">Back</button>
+        </td>
+    </tr>
+    <div *ngIf="movie.length == 0">
+        <tr >
+            <h2>Your search produces no result</h2>
+        </tr>
+    </div>
+    <!-- <div *ngIf="numOfMovie > 0"> -->
+        <tr *ngFor="let m of movie">
+            <td>
+                <img *ngIf="m.src == 'null'" src="assets/images/placeholder.jpg"/>
+                <img *ngIf="m.src != 'null'" src="{{m.src}}"/>
+            </td>
+            <td >
+                <tr>
+                    <a href="{{m.url}}"><h3>{{m.displayTitle}}  {{m.mpaaRating}}</h3></a>
+                </tr>
+                <tr>
+                    <h2>{{m.headline}}</h2>
+                </tr>
+                <tr>
+                    <h4>{{m.summaryShort}}</h4>
+                </tr>
+                <tr>
+                    <h5>Comments: {{m.commentCount}}</h5>
+                </tr>
+                <tr>
+                    <p><button (click)="goCommentPage(m.displayTitle)">Comment</button></p>
+                </tr>
+            </td>
+        </tr>
+    <!-- </div> -->
+    
+
+</table>
